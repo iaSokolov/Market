@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  #  база данных
+  db:
+    build: ./database
+    container_name: postgres_container
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 1987
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./database/data:/var/lib/postgresql/data
+  #  панель управления базой данных
+  adminer:
+    container_name: adminer_container
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    links:
+      - db

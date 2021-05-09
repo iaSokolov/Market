@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head-fragment.html :: head"></head>
+
+<body>
+<header th:replace="/fragments/header-fragment.html :: header"></header>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav th:replace="fragments/navbar-fragment.html :: navbar"></nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <form th:action="@{/sale/new}" method="post" th:object="${sale}">
+                <div class="form-group">
+                    <label for="productId">Код товара</label>
+                    <input type="text" class="form-control" id="productId" placeholder="Код продукта"
+                           th:field="*{id.product_id}">
+                </div>
+
+                <div class="form-group">
+                    <label for="customerId">Код клиента</label>
+                    <input type="text" class="form-control" id="customerId" placeholder="Код клиента"
+                           th:field="*{id.customer_id}">
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Цена</label>
+                    <input type="number" class="form-control" id="amount" placeholder="Цена"
+                           th:field="*{amount}"/>
+                </div>
+
+                <button type="submit" name="action" value="create" class="btn btn-primary">Создать</button>
+            </form>
+        </main>
+    </div>
+</div>
+
+<div th:replace="/fragments/bodyfooter-fragment.html::bodyfooter"></div>
+</body>
+</html>

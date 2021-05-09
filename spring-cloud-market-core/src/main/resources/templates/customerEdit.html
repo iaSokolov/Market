@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head-fragment.html :: head"></head>
+
+<body>
+<header th:replace="/fragments/header-fragment.html :: header"></header>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav th:replace="fragments/navbar-fragment.html :: navbar"></nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <form th:action="@{/customer/edit}" method="post" th:object="${customer}">
+                <div class="form-group">
+                    <label for="customerId">Код товара</label>
+                    <input type="text" class="form-control" id="customerId" placeholder="Код продукта" th:field="*{id}">
+                </div>
+                <div class="form-group">
+                    <label for="customerName">Название</label>
+                    <input type="text" class="form-control" id="customerName" placeholder="Название продукта"
+                           th:field="*{name}">
+                </div>
+
+                <button type="submit" name="action" value="save" class="btn btn-primary">Сохранить</button>
+                <button type="submit" name="action" value="delete" class="btn btn-danger">Удалить</button>
+            </form>
+        </main>
+    </div>
+</div>
+
+<div th:replace="/fragments/bodyfooter-fragment.html::bodyfooter"></div>
+</body>
+</html>

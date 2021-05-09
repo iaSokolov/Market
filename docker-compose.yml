@@ -1,0 +1,68 @@
+version: '3.1'
+
+services:
+#  база данных
+  db:
+    build: ./database
+    container_name: postgres_container
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 1987
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./database/data:/var/lib/postgresql/data
+#  панель управления базой данных
+  adminer:
+    container_name: adminer_container
+    image: adminer
+    restart: always
+    ports:
+      - 8760:8080
+    links:
+      - db
+#  Eureka Server
+  eureka:
+    container_name: discovery_service_container
+    build: ./spring-cloud-discovery-server
+    restart: always
+    ports:
+      - 8761:8761
+#  Config Server
+  config:
+    container_name: config_service_container
+    build:
+      ./spring-cloud-config
+    depends_on:
+      - eureka
+      - db
+    restart: always
+#  базовое приложение
+  market:
+    container_name: market_container
+    build:
+      ./spring-cloud-market-core
+    restart: always
+    ports:
+      - 8189:8189
+    environment:
+      DB_HOST: db
+      DB_USERNAME: $DB_USERNAME
+      DB_PASSWORD: $DB_PASSWORD
+#    depends_on:
+#      config:
+#        condition: service_healthy
+#Сервис "Товары"
+  product:
+    container_name: product_container
+    build:
+      ./spring-cloud-product
+    ports:
+      - 8190:8190
+#    depends_on:
+#      config:
+#        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_USERNAME: $DB_USERNAME
+      DB_PASSWORD: $DB_PASSWORD
+    restart: always

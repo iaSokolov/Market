@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head th:replace="fragments/head-fragment.html :: head"></head>
+
+<body>
+<header th:replace="fragments/header-fragment.html :: header"></header>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav th:replace="fragments/navbar-fragment.html :: navbar"></nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <h2>Клиенты</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>Код клиента</th>
+                        <th>Название</th>
+                        <th sec:authorize="hasRole('ROLE_ADMIN')">Действия</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="customer : ${customers}">
+                        <td th:text="${customer.id}"></td>
+                        <td th:text="${customer.name}"></td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a th:href="@{/customer/{id}(id=${customer.id})}">Изменить</a>
+                            <a th:href="@{/customer/{id}(id=${customer.id})}">Удалить</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a th:href="@{/customer/new}">Создать</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>
+
+<div th:replace="fragments/bodyfooter-fragment.html::bodyfooter"></div>
+</body>
+</html>
