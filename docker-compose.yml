@@ -10,7 +10,7 @@ services:
       POSTGRES_PASSWORD: 1987
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
-      - /root/MarketData:/var/lib/postgresql/data
+      - ./marketData:/var/lib/postgresql/data
 #  панель управления базой данных
   adminer:
     container_name: adminer_container

@@ -51,7 +51,11 @@
         </dependencies>
     </dependencyManagement>
 
+    <packaging>jar</packaging>
+
+
     <build>
+        <finalName>app</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
