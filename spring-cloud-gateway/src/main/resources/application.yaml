@@ -6,6 +6,6 @@ spring:
     gateway:
       routes:
         - id: product
-          uri: http://localhost:8081/
+          uri: http://product:8080/
           predicates:
             - Path=/api/product/**

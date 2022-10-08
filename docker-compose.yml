@@ -40,6 +40,16 @@ services:
     restart: always
     ports:
       - 8888:8888
+#Gateway
+  gateway:
+    container_name: gateway
+    build:
+      ./spring-cloud-gateway
+    depends_on:
+      - eureka
+    restart: always
+    ports:
+      - 8080:8080
 #  базовое приложение
   market:
     container_name: market_container
@@ -47,11 +57,14 @@ services:
       ./spring-cloud-market-core
     restart: always
     ports:
-      - 80:8189
+      - 80:8080
     environment:
       DB_HOST: db
       DB_USERNAME: $DB_USERNAME
       DB_PASSWORD: $DB_PASSWORD
+
+
+
 #    depends_on:
 #      config:
 #        condition: service_healthy
@@ -60,8 +73,6 @@ services:
     container_name: product_container
     build:
       ./spring-cloud-product
-    ports:
-      - 8190:8190
 #    depends_on:
 #      config:
 #        condition: service_healthy

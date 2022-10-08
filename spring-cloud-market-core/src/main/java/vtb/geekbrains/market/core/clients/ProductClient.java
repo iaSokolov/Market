@@ -8,15 +8,15 @@ import java.util.List;
 
 @FeignClient(name = "product")
 public interface ProductClient {
-    @GetMapping("/product")
+    @GetMapping("/api/product")
     public List<Product> getAll();
 
-    @GetMapping("/product/{id}")
+    @GetMapping("/api/product/{id}")
     public Product getById(@PathVariable(value = "id") Long productId);
 
-    @PostMapping("/product")
+    @PostMapping("/api/product")
     public Product save(Product product);
 
-    @DeleteMapping("/product")
+    @DeleteMapping("/api/product")
     void delete(Product product);
 }
