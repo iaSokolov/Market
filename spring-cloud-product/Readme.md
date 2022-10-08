@@ -1,0 +1,5 @@
+Сервис для работы с товарами 
+
+Для тестирования использовать jwt токены:
+1. Администратор: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhIiwiUk9MRSI6IlJPTEVfVVNFUiIsImV4cCI6MTY2NjI5OTYwMH0.qzCCmNZGJrZRXQMOpzh-erfShFEl1cqn8MfVOm_HkrfcL5fMKTprCRo1oHKUAd3UD0EddBf4SCyIjwS5h4F1Ow
+2. Пользователь: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1IiwiUk9MRSI6IlJPTEVfVVNFUiIsImV4cCI6MTY2NjI5OTYwMH0.5ELSPJEuWy_khOYj8urMFHOUSy_UqAnm-tU_j4I-3RUzLVX-3zilvqwmAZzZQK8Ow-czec10Lg9Lg1tdCtMjXA

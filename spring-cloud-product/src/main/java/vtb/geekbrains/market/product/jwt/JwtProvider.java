@@ -13,12 +13,14 @@ public class JwtProvider {
     private String secret;
 
     public boolean validateToken(String token) {
+        boolean success = false;
         try {
             Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
-            return true;
+            success = true;
         } catch (Exception e) {
+            success = false;
         }
-        return false;
+        return success;
     }
 
     public String getLoginFromToken(String token) {

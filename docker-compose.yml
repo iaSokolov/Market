@@ -11,6 +11,8 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - ./marketData:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
 #  панель управления базой данных
   adminer:
     container_name: adminer_container
@@ -36,6 +38,8 @@ services:
       - eureka
       - db
     restart: always
+    ports:
+      - 8888:8888
 #  базовое приложение
   market:
     container_name: market_container
