@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import vtb.geekbrains.market.core.clients.ProductClient;
+import vtb.geekbrains.market.core.models.NavBar;
 import vtb.geekbrains.market.core.models.Product;
 
 @Data
@@ -20,6 +21,7 @@ public class ProductController {
                              @RequestParam(name = "page", required = false) String page) {
 
         model.addAttribute("productList", productClient.getAll());
+        model.addAttribute("navBar", new NavBar("/product"));
         return "product";
     }
 
@@ -27,12 +29,14 @@ public class ProductController {
     public String getProduct(Model model, @PathVariable(value = "id") Long productId) {
         Product product = this.productClient.getById(productId);
         model.addAttribute("product", product);
+        model.addAttribute("navBar", new NavBar("/product"));
         return "productEdit";
     }
 
     @GetMapping("/product/new")
     public String getProductCreate(Model model) {
         model.addAttribute("product", new Product());
+        model.addAttribute("navBar", new NavBar("/product"));
         return "productCreate";
     }
 

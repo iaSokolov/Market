@@ -1,0 +1,27 @@
+server:
+  port: 8181
+spring:
+  application:
+    name: market
+  cloud:
+    config:
+      enabled: false
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/market?currentSchema=public
+    username: postgres
+    password: 1987
+  flyway:
+    enabled: true
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: validate
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+jwt:
+  secret: c29rb2xvdg==

@@ -6,7 +6,7 @@ import vtb.geekbrains.market.core.models.Sale;
 
 import java.util.List;
 
-@FeignClient("sales")
+//@FeignClient("sales")
 public interface SalesClient {
     @GetMapping("/sales")
     public List<Sale> getAll();

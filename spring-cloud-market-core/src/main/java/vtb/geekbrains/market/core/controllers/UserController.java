@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import vtb.geekbrains.market.core.models.Authority;
+import vtb.geekbrains.market.core.models.NavBar;
 import vtb.geekbrains.market.core.models.Role;
 import vtb.geekbrains.market.core.models.User;
 import vtb.geekbrains.market.core.repositories.AuthoritiesRepo;
@@ -35,6 +36,7 @@ public class UserController {
         List<Role> roles = this.roleRepo.findAll();
 
         model.addAttribute("users", this.userService.getAll());
+        model.addAttribute("navBar", new NavBar("/users"));
         return "users";
     }
 }

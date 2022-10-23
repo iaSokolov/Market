@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import vtb.geekbrains.market.core.models.NavBar;
 import vtb.geekbrains.market.core.models.User;
 
 @Data
@@ -25,6 +26,10 @@ public class IndexController {
         User user = new User();
         user.setName(username);
         model.addAttribute("user", user);
+        model.addAttribute("user", user);
+
+        model.addAttribute("navBar", new NavBar("/"));
+
         return "index";
     }
 }

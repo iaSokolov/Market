@@ -9,7 +9,7 @@ import vtb.geekbrains.market.core.models.Sale;
 
 @Controller
 public class SalesController {
-    @Autowired
+    //@Autowired
     SalesClient salesClient;
 
     @GetMapping("/sales")

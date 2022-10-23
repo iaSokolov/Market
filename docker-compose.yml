@@ -12,7 +12,7 @@ services:
     volumes:
       - ./marketData:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - 5433:5432
 #  панель управления базой данных
   adminer:
     container_name: adminer_container

@@ -6,7 +6,7 @@ import vtb.geekbrains.market.core.models.Product;
 
 import java.util.List;
 
-@FeignClient(name = "product")
+@FeignClient(name = "product", url = "http://localhost:8080")
 public interface ProductClient {
     @GetMapping("/api/product")
     public List<Product> getAll();
